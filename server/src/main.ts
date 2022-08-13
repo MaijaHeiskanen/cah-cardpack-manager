@@ -11,11 +11,14 @@ async function bootstrap() {
       'CAH Cardpack Manager to manage cardpacks to be used in CAH.',
     )
     .setVersion('1.0')
-    .addTag('Ping')
+    .setBasePath('/')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config, {
+    ignoreGlobalPrefix: true,
+  });
   SwaggerModule.setup('api', app, document);
 
   await app.listen(3000);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

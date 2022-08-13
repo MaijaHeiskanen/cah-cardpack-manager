@@ -9,16 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Language = void 0;
+const openapi = require("@nestjs/swagger");
 const core_1 = require("@mikro-orm/core");
-let User = class User {
+let Language = class Language extends core_1.BaseEntity {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { code: { required: true, type: () => String }, name: { required: true, type: () => String }, native: { required: true, type: () => String } };
+    }
 };
 __decorate([
     (0, core_1.PrimaryKey)(),
     __metadata("design:type", String)
-], User.prototype, "_id", void 0);
-User = __decorate([
+], Language.prototype, "code", void 0);
+__decorate([
+    (0, core_1.Property)({ unique: true }),
+    __metadata("design:type", String)
+], Language.prototype, "name", void 0);
+__decorate([
+    (0, core_1.Property)({ unique: true }),
+    __metadata("design:type", String)
+], Language.prototype, "native", void 0);
+Language = __decorate([
     (0, core_1.Entity)()
-], User);
-exports.User = User;
-//# sourceMappingURL=User.js.map
+], Language);
+exports.Language = Language;
+//# sourceMappingURL=Language.entity.js.map

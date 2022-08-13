@@ -9,28 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
+exports.User = void 0;
 const openapi = require("@nestjs/swagger");
-const common_1 = require("@nestjs/common");
-const app_service_1 = require("./app.service");
-let AppController = class AppController {
-    constructor(appService) {
-        this.appService = appService;
-    }
-    getHello() {
-        return this.appService.getHello();
+const core_1 = require("@mikro-orm/core");
+const BaseModel_entity_1 = require("./BaseModel.entity");
+let User = class User extends BaseModel_entity_1.BaseModel {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { email: { required: true, type: () => String }, username: { required: true, type: () => String } };
     }
 };
 __decorate([
-    (0, common_1.Get)(),
-    openapi.ApiResponse({ status: 200, type: String }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
-AppController = __decorate([
-    (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
-], AppController);
-exports.AppController = AppController;
-//# sourceMappingURL=app.controller.js.map
+    (0, core_1.Property)({ unique: true }),
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
+__decorate([
+    (0, core_1.Property)({ unique: true }),
+    __metadata("design:type", String)
+], User.prototype, "username", void 0);
+User = __decorate([
+    (0, core_1.Entity)()
+], User);
+exports.User = User;
+//# sourceMappingURL=User.entity.js.map

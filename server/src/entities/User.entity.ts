@@ -1,5 +1,5 @@
 import { Entity, Property } from '@mikro-orm/core';
-import { BaseModel } from './BaseModel';
+import { BaseModel } from './BaseModel.entity';
 
 @Entity()
 export class User extends BaseModel {

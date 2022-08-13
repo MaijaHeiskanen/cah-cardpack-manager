@@ -1,5 +1,5 @@
 import { Entity, Enum, Property } from '@mikro-orm/core';
-import { BaseModel } from './BaseModel';
+import { BaseModel } from './BaseModel.entity';
 
 export enum CARD_TYPES {
   WHITE = 'white',
@@ -8,9 +8,6 @@ export enum CARD_TYPES {
 
 @Entity()
 export class BaseCard extends BaseModel {
-  @Property()
-  cardpackId!: string;
-
   @Property()
   text!: string;
 

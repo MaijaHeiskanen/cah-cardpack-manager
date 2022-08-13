@@ -1,5 +1,4 @@
 import {
-  Cascade,
   Collection,
   Entity,
   ManyToMany,
@@ -7,11 +6,11 @@ import {
   OneToMany,
   Property,
 } from '@mikro-orm/core';
-import { BaseModel } from './BaseModel';
-import { BlackCard } from './BlackCard';
-import { Language } from './Language';
-import { User } from './User';
-import { WhiteCard } from './WhiteCard';
+import { BaseModel } from './BaseModel.entity';
+import { BlackCard } from './BlackCard.entity';
+import { Language } from './Language.entity';
+import { User } from './User.entity';
+import { WhiteCard } from './WhiteCard.entity';
 
 @Entity()
 export class Cardpack extends BaseModel {
@@ -21,8 +20,8 @@ export class Cardpack extends BaseModel {
   @Property()
   name!: string;
 
-  @Property()
-  description: string;
+  @Property({ nullable: true })
+  description?: string;
 
   @Property()
   nsfw!: boolean;
@@ -33,13 +32,15 @@ export class Cardpack extends BaseModel {
   @ManyToOne(() => User, { mapToPk: true })
   userId!: string;
 
-  @OneToMany(() => BlackCard, (blackCard) => blackCard.id, {
-    cascade: [Cascade.ALL],
+  @OneToMany({
+    mappedBy: 'cardpack',
+    entity: () => BlackCard,
   })
   blackCards = new Collection<BlackCard>(this);
 
-  @OneToMany(() => WhiteCard, (whiteCard) => whiteCard.id, {
-    cascade: [Cascade.ALL],
+  @OneToMany({
+    mappedBy: 'cardpack',
+    entity: () => WhiteCard,
   })
   whiteCards = new Collection<WhiteCard>(this);
 }

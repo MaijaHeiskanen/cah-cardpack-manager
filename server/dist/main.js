@@ -9,11 +9,14 @@ async function bootstrap() {
         .setTitle('CAH Cardpack Manager')
         .setDescription('CAH Cardpack Manager to manage cardpacks to be used in CAH.')
         .setVersion('1.0')
-        .addTag('Ping')
+        .setBasePath('/')
         .build();
-    const document = swagger_1.SwaggerModule.createDocument(app, config);
+    const document = swagger_1.SwaggerModule.createDocument(app, config, {
+        ignoreGlobalPrefix: true,
+    });
     swagger_1.SwaggerModule.setup('api', app, document);
     await app.listen(3000);
+    console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

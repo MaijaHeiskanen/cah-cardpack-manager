@@ -6,15 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppService = void 0;
+exports.CardpackModule = void 0;
 const common_1 = require("@nestjs/common");
-let AppService = class AppService {
-    getHello() {
-        return 'Hello app!';
-    }
+const cardpack_controller_1 = require("./controllers/cardpack.controller");
+const cardpack_service_1 = require("./services/cardpack.service");
+let CardpackModule = class CardpackModule {
 };
-AppService = __decorate([
-    (0, common_1.Injectable)()
-], AppService);
-exports.AppService = AppService;
-//# sourceMappingURL=app.service.js.map
+CardpackModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [cardpack_controller_1.CardpackController],
+        providers: [cardpack_service_1.CardpackService],
+    })
+], CardpackModule);
+exports.CardpackModule = CardpackModule;
+//# sourceMappingURL=cardpack.module.js.map
