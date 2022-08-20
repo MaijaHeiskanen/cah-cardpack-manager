@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: cah-pack-manager-db
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cah-pack-manager-db
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432

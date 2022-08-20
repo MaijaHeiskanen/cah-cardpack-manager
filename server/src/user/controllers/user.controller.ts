@@ -14,6 +14,6 @@ export class UserController {
 
   @Get('/:id')
   getUser(@Param('id') id: string) {
-    return this.userService.getUser(id);
+    return this.userService.createUser(id);
   }
 }

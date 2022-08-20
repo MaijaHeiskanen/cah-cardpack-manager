@@ -9,6 +9,8 @@
     "circular": "madge ./src",
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "db": "docker-compose up -d",
+    "db:recreate": "npx mikro-orm migration:fresh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -22,7 +24,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@mikro-orm/cli": "^5.3.1",
     "@mikro-orm/core": "^5.3.1",
+    "@mikro-orm/migrations": "^5.3.1",
     "@mikro-orm/nestjs": "^5.1.0",
     "@mikro-orm/postgresql": "^5.3.1",
     "@nestjs/common": "^9.0.0",
@@ -72,5 +76,12 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
   }
 }

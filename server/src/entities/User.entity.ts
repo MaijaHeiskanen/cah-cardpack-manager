@@ -11,4 +11,11 @@ export class User extends BaseModel {
   @ApiProperty()
   @Property({ unique: true })
   username!: string;
+
+  constructor(email: string, username: string) {
+    super();
+    this.email = email;
+    this.username = username;
+    this.id = Date.now().toString();
+  }
 }

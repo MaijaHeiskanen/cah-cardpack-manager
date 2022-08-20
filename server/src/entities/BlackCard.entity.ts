@@ -1,15 +1,27 @@
-import { Entity, Enum, ManyToOne } from '@mikro-orm/core';
+import { Entity, Enum, ManyToOne, Property, t } from '@mikro-orm/core';
 import { ApiProperty } from '@nestjs/swagger';
-import { BaseCard, CARD_TYPES } from './BaseCard.entity';
+import { CARD_TYPES } from '../enums/cardtype';
+import { BaseModel } from './BaseModel.entity';
 import { Cardpack } from './Cardpack.entity';
 
 @Entity()
-export class BlackCard extends BaseCard {
+export class BlackCard extends BaseModel {
   @ApiProperty()
-  @Enum({ items: [CARD_TYPES.BLACK] })
-  type!: CARD_TYPES.BLACK;
+  @Property()
+  text!: string;
 
   @ApiProperty()
-  @ManyToOne({ entity: () => Cardpack })
-  cardpack!: Cardpack;
+  @Enum({ items: [CARD_TYPES.BLACK] })
+  type: CARD_TYPES.BLACK = CARD_TYPES.BLACK;
+
+  @ApiProperty()
+  @ManyToOne({ entity: () => Cardpack, mapToPk: true })
+  cardpackId!: string;
+
+  constructor(text: string, cardpackId: string) {
+    super();
+    this.text = text;
+    this.type = CARD_TYPES.BLACK;
+    this.cardpackId = cardpackId;
+  }
 }

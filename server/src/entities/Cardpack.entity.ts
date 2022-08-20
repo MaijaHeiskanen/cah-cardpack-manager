@@ -41,15 +41,23 @@ export class Cardpack extends BaseModel {
 
   @ApiProperty({ type: [BlackCard] })
   @OneToMany({
-    mappedBy: 'cardpack',
+    mappedBy: 'cardpackId',
     entity: () => BlackCard,
   })
   blackCards = new Collection<BlackCard>(this);
 
   @ApiProperty({ type: [WhiteCard] })
   @OneToMany({
-    mappedBy: 'cardpack',
+    mappedBy: 'cardpackId',
     entity: () => WhiteCard,
   })
   whiteCards = new Collection<WhiteCard>(this);
+
+  constructor(code: string, name: string, nsfw: boolean, userId: string) {
+    super();
+    this.code = code;
+    this.name = name;
+    this.nsfw = nsfw;
+    this.userId = userId;
+  }
 }

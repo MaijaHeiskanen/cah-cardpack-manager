@@ -20,7 +20,13 @@
     "noFallthroughCasesInSwitch": true,
     "plugins": [
       {
-        "name": "@nestjs/swagger/plugin"
+        "name": "@nestjs/swagger/plugin",
+        "options": {
+          "dtoFileNameSuffix": [
+            ".entity.ts",
+            ".dto.ts"
+          ]
+        }
       }
     ]
   }

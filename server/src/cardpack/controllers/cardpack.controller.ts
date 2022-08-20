@@ -8,18 +8,23 @@ import { CardpackService } from '../services/cardpack.service';
 export class CardpackController {
   constructor(private readonly cardpackService: CardpackService) {}
 
+  @Get()
+  getCardpacks() {
+    return this.cardpackService.getCardpacks();
+  }
+
   @Get('/:id')
   getCardpack(@Param('id') id: string) {
-    return this.cardpackService.getCardpack(id);
+    return this.cardpackService.createCardpack(id);
   }
 
-  @Post('/:id')
-  postCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
-    return this.cardpackService.getCardpack(id);
-  }
+  // @Post('/:id')
+  // postCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
+  //   return this.cardpackService.getCardpack(id);
+  // }
 
-  @Patch('/:id')
-  patchCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
-    return this.cardpackService.getCardpack(id);
-  }
+  // @Patch('/:id')
+  // patchCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
+  //   return this.cardpackService.getCardpack(id);
+  // }
 }
