@@ -1,5 +1,6 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
+import { CommonModule } from 'src/common/common.module';
 import { User } from 'src/entities/User.entity';
 import { UserRepository } from 'src/user/repositories/UserRepository';
 import { LoginController } from './controllers/login.controller';
@@ -12,6 +13,7 @@ import { UserService } from './services/user.service';
     MikroOrmModule.forFeature({
       entities: [User],
     }),
+    CommonModule,
   ],
   controllers: [UserController, LoginController],
   providers: [UserService, LoginService, UserRepository],

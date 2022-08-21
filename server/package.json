@@ -9,8 +9,8 @@
     "circular": "madge ./src",
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "db": "docker-compose up -d",
-    "db:recreate": "npx mikro-orm migration:fresh",
+    "db:docker": "docker-compose up -d",
+    "db:fresh": "npx mikro-orm migration:fresh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -33,9 +33,14 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.0.5",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/uuid": "^8.3.4",
+    "dotenv": "^16.0.1",
+    "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

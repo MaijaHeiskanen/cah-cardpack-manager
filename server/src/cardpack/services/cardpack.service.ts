@@ -14,9 +14,9 @@ export class CardpackService {
     return [new Cardpack('aaa', 'aaa', true, 'aaa')];
   }
 
-  // getCardpack(id: string) {
-  //   return new Cardpack('aaa', id, true, 'aaa');
-  // }
+  getCardpack(id: string) {
+    return new Cardpack('aaa', id, true, 'aaa');
+  }
 
   createCardpack(id: string) {
     const newCardpack = this.cardpackRepository.create(

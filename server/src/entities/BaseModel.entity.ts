@@ -4,8 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 @Entity()
 export class BaseModel extends BaseEntity<BaseModel, 'id'> {
   @ApiProperty()
-  // @PrimaryKey({ type: 'uuid' })
-  @PrimaryKey()
+  @PrimaryKey({ type: 'uuid' })
   id!: string;
 
   @ApiProperty()

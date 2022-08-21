@@ -12,10 +12,10 @@ export class User extends BaseModel {
   @Property({ unique: true })
   username!: string;
 
-  constructor(email: string, username: string) {
+  constructor(id: string, email: string, username: string) {
     super();
     this.email = email;
     this.username = username;
-    this.id = Date.now().toString();
+    this.id = id;
   }
 }

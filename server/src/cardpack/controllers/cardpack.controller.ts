@@ -15,16 +15,16 @@ export class CardpackController {
 
   @Get('/:id')
   getCardpack(@Param('id') id: string) {
-    return this.cardpackService.createCardpack(id);
+    return this.cardpackService.getCardpack(id);
   }
 
-  // @Post('/:id')
-  // postCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
-  //   return this.cardpackService.getCardpack(id);
-  // }
+  @Post('/:id')
+  postCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
+    return this.cardpackService.getCardpack(id);
+  }
 
-  // @Patch('/:id')
-  // patchCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
-  //   return this.cardpackService.getCardpack(id);
-  // }
+  @Patch('/:id')
+  patchCardpack(@Param('id') id: string, @Body() cardpack: Cardpack) {
+    return this.cardpackService.getCardpack(id);
+  }
 }
